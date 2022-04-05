@@ -2,24 +2,61 @@ const container = document.querySelector('.container');
 const row = document.querySelector('.row');
 const column = document.querySelector('.column');
 
-function createGrid() {
-    for (i = 0; i < 16; i++) {
-        row.appendChild(column.cloneNode(true));
+const btn = document.querySelector('#btn');
+
+let input = 100;
+
+function getInput() {
+    input = prompt('Enter a number up to 100 to change the size of the drawing board.');
+    return input;
 }
 
-    for (i = 0; i < 15; i++) {
-        container.appendChild(row.cloneNode(true));
+
+function createGrid(x) {
+    for (i = 0; i < x; i++) {
+        row.appendChild(column.cloneNode(true));
     }
 
-
+    for (i = 0; i < x; i++) {
+        container.appendChild(row.cloneNode(true));
+    }
 }
 
-createGrid();
+createGrid(input);
 
-const newColumns = document.querySelectorAll('.column');
+let columns = document.querySelectorAll('.column');
 
-for (const element of newColumns) {
+
+let rows = document.querySelectorAll('.row');
+
+for (const element of columns) {
     element.addEventListener('mouseenter', () => {
         element.style.backgroundColor = 'black';
     })
 }
+
+function createCustomGrid() {
+    columns.forEach(element => element.parentNode.removeChild(element));
+    rows.forEach(row => row.parentNode.removeChild(row));
+    getInput();
+    createGrid(input);
+    console.log(input);
+    columns = document.querySelectorAll('.column');
+    rows = document.querySelectorAll('.row');
+    for (const element of columns) {
+        element.addEventListener('mouseenter', ()=> {
+            element.style.backgroundColor = 'black';
+        })
+    }
+    
+}
+
+btn.addEventListener('click', () => {
+    createCustomGrid();
+});
+
+function changeColor() {
+    element.style.backgroundColor = 'black'
+}
+
+
