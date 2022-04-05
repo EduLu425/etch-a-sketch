@@ -1,4 +1,4 @@
-const container = document.querySelector('.container');
+var container = document.querySelector('.container');
 const row = document.querySelector('.row');
 const column = document.querySelector('.column');
 
@@ -36,13 +36,14 @@ for (const element of columns) {
 }
 
 function createCustomGrid() {
-    columns.forEach(element => element.parentNode.removeChild(element));
-    rows.forEach(row => row.parentNode.removeChild(row));
+    columns.forEach(column => column.remove());
+    rows.forEach(row => row.remove());
     getInput();
     createGrid(input);
     console.log(input);
     columns = document.querySelectorAll('.column');
     rows = document.querySelectorAll('.row');
+    container = document.querySelector('.container');
     for (const element of columns) {
         element.addEventListener('mouseenter', ()=> {
             element.style.backgroundColor = 'black';
