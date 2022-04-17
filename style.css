@@ -3,17 +3,12 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .container {
     background-color: rgb(135, 5, 5);
-    margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+
     border-style: solid;
     border-width: 1px;
     border-color: gold;
@@ -39,4 +34,5 @@ body {
     width: 100px;
     height: 100px;
     flex: 0 0 auto;
+    margin-top: 5px;
 }

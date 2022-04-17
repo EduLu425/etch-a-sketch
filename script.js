@@ -11,7 +11,6 @@ function getInput() {
     return input;
 }
 
-
 function createGrid(x) {
     for (i = 0; i < x; i++) {
         row.appendChild(column.cloneNode(true));
@@ -31,23 +30,45 @@ let rows = document.querySelectorAll('.row');
 
 for (const element of columns) {
     element.addEventListener('mouseenter', () => {
-        element.style.backgroundColor = 'black';
-    })
+        let rand = Math.random();
+        let percent = 0.1; /* Chance that pixel will be black */ 
+    
+        if (rand > percent) {
+            element.style.backgroundColor = '#' + (Math.floor(Math.random() * 16777215).toString(16));
+        }
+        else {
+            element.style.backgroundColor = 'black'
+        }
+        }
+    )
 }
 
 function createCustomGrid() {
-    columns.forEach(column => column.remove());
-    rows.forEach(row => row.remove());
+    while (row.firstChild) {
+        row.removeChild(row.lastChild)
+    }
+    while (container.firstChild) {
+        container.removeChild(container.lastChild)
+    }
     getInput();
-    createGrid(input);
+    createGrid(parseInt(input));
     console.log(input);
     columns = document.querySelectorAll('.column');
     rows = document.querySelectorAll('.row');
     container = document.querySelector('.container');
     for (const element of columns) {
-        element.addEventListener('mouseenter', ()=> {
-            element.style.backgroundColor = 'black';
+        element.addEventListener('mouseenter', () => {
+            let rand = Math.random();
+        let percent = 0.1; /* Chance that pixel will be black */ 
+    
+        if (rand > percent) {
+            element.style.backgroundColor = '#' + (Math.floor(Math.random() * 16777215).toString(16));
+        }
+        else {
+            element.style.backgroundColor = 'black'
+        }
         })
+        
     }
     
 }
@@ -56,8 +77,5 @@ btn.addEventListener('click', () => {
     createCustomGrid();
 });
 
-function changeColor() {
-    element.style.backgroundColor = 'black'
-}
 
 
